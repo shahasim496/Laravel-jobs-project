@@ -12,9 +12,15 @@ class JobsController extends Controller
      */
     public function index()
     {
-        dd('here');
+       
         $jobs=Job::all();
-        dd($jobs);
+
+
+
+        return response()->json([
+           ' jobs' => $jobs,
+           'message' => 'jobs loaded sucessfully'
+        ]);
     }
 
     /**

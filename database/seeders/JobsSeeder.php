@@ -23,6 +23,7 @@ class JobsSeeder extends Seeder
             DB::table('jobs')->insert([
                 'title' => $item['title'],
                 'type' => $item['type'],
+                'location' => $item['location'],
                 'description' => $item['description'],
                 'salary' => $item['salary'],
                 'name' => $item['name'],
