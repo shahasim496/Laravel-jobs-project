@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'title','type','location','description','salary','name','cdescription','contactEmail','contactPhone'
         
         // Add more attributes as needed
     ];

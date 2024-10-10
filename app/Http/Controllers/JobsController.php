@@ -14,12 +14,10 @@ class JobsController extends Controller
     {
        
         $jobs=Job::all();
-
-
-
         return response()->json([
-           ' jobs' => $jobs,
-           'message' => 'jobs loaded sucessfully'
+           ' job' => $jobs,
+           'message'=>'data added'
+           
         ]);
     }
 
@@ -36,7 +34,8 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $job=Job::create($request->all());
+        return response ()-> json($job);
     }
 
     /**
@@ -44,7 +43,13 @@ class JobsController extends Controller
      */
     public function show(string $id)
     {
-        
+        $job=Job::find($id);
+        return response()->json([
+            ' job' => $job,
+            'message'=>'here is your id'
+            
+         ]);
+
     }
 
     /**
@@ -52,7 +57,8 @@ class JobsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $job = Job::find($id);
+        return response ()-> json($job);
     }
 
     /**
@@ -60,7 +66,21 @@ class JobsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $job = Job::find($id);
+        $job->update($request->all());
+        // $job->update([
+        //     'title' => $request->input('title'),
+        //     'type' => $request->input('type'),
+        //     'location' => $request->input('location'),
+        //     'description' =>$request->input('description'),
+        //     'salary' =>$request->input('salary'),
+        //     'name' => $request->input('name'),
+        //     'cdescription' => $request->input('cdescription'),
+        //     'contactEmail' => $request->input('contactEmail'),
+        //     'contactPhone' => $request->input('contactPhone'),
+        // ]);
+
+        return response ()-> json($job);
     }
 
     /**
@@ -68,6 +88,15 @@ class JobsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+
+        return response()->json([
+           
+            'message'=>'job deleted sucessfully'
+            
+         ]);
+
+
     }
 }
